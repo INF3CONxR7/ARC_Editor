@@ -1,12 +1,13 @@
 <p align="center">
-  <img src="logo.png" alt="Logo d’ARC Editor" width="128">
+  <img src="https://zupimages.net/up/26/43/gzdb.png" alt="Logo d’ARC Editor" width="128">
 </p>
 
 <h1 align="center">ARC Editor</h1>
 
 <p align="center">
   Explorez et modifiez les archives <b>.arc</b> de <b>Minecraft PlayStation 3 Edition</b> (MediaPS3.arc, media.arc des
-  packs) :<br>aperçu des images et des interfaces <b>.fui</b>, remplacement, export, ajout et renommage des fichiers.
+  packs) :<br>aperçu des images et des interfaces <b>.fui</b>, remplacement, export, textes, couleurs, ajout et renommage
+  des fichiers.
 </p>
 
 <p align="center">
@@ -37,17 +38,28 @@
 - **Liste des fichiers** avec dossiers repliables (Graphics, Structures…), tri naturel, recherche instantanée et
   filtres (images, interfaces, autres).
 - **Aperçu** : images PNG et JPEG avec zoom, déplacement et damier de transparence (pixels nets pour les textures),
-  **images intégrées aux interfaces .fui** (bande de vignettes), tables de couleurs `.col`, textes, et aperçu
-  hexadécimal pour le reste. Un dossier choisi s’affiche en **galerie**.
-- **Remplacement** d’un fichier ou d’une image d’interface : les images sont converties en PNG 32 bits (le format du
-  jeu), et une résolution différente de l’originale est signalée avant.
-- **Export** d’un fichier, d’un dossier, de toutes les images d’une interface ou de l’archive entière.
+  **images intégrées aux interfaces .fui** dans leurs vraies couleurs (bande de vignettes, avec une barre pour la faire
+  défiler), tables de couleurs `.col`, textes, et aperçu hexadécimal pour le reste. Un dossier choisi s’affiche en
+  **galerie**.
+- **Remplacement** d’un fichier ou d’une image d’interface par un PNG, JPEG, BMP ou GIF. Dans une interface `.fui`,
+  un **JPEG reste un JPEG** (inséré tel quel, sans perte) et les autres formats deviennent des PNG 32 bits, rangés
+  comme ceux du jeu pour garder les mêmes couleurs ; une image `.png` de l’archive reçoit un PNG. Une résolution
+  différente de l’originale est signalée avant.
+- **Export** d’un fichier, d’un dossier, de toutes les images d’une interface (les JPEG en `.jpg` tels quels, les
+  autres en PNG) ou de l’archive entière.
 - **Éditeur de langues** : un double-clic sur `languages.loc` ouvre les textes du jeu, langue par langue (21 langues,
   plus de 4 600 textes), avec recherche ; les traductions modifiées retournent dans l’archive. Un fichier `.loc` du
   disque s’ouvre aussi seul (*Ouvrir avec*).
+- **Textes modifiables directement** dans l’aperçu (`splashes.txt` et les autres `.txt`, `.xml`, `.json`…) :
+  l’encodage et les fins de ligne d’origine sont gardés.
+- **Couleurs modifiables** dans les tables `.col` (`HTMLColours.col`, `colours.col` des packs) : un clic sur une
+  couleur, puis sa valeur hexadécimale (`#55FF55`) ou le nuancier de Windows. Revenir à la valeur d’origine annule la
+  modification.
 - **Ajout, renommage, suppression et restauration** des fichiers, avant enregistrement.
 - **Enregistrement sûr** : l’archive est écrite à côté puis mise à la place (jamais à moitié écrite), et une copie de
   l’original (`.bak`) est gardée au premier enregistrement. L’ordre des fichiers d’origine est conservé.
+- **Interfaces .fui réparées** : une interface dont l’en-tête annonce de fausses tailles (après un passage dans un
+  autre outil) s’ouvre quand même, et son en-tête est corrigé à l’enregistrement.
 - **Mises à jour automatiques** et **présence Discord**.
 
 ## Installation
@@ -71,13 +83,16 @@ l’exécutable.
 2. **Trouver un fichier** : dans la liste, ou par la recherche en haut à droite (`Ctrl+F`).
 3. **Remplacer** : bouton *Remplacer* (ou glissez une image sur l’aperçu). Dans une interface `.fui`, c’est l’image
    choisie dans la bande de vignettes qui est remplacée.
-4. **Enregistrer** : `Ctrl+S`. Les fichiers changés sont marqués d’un point (ambre : modifié, vert : ajouté), et la
-   ligne d’état indique le nombre de modifications à enregistrer.
-5. **Sur la PS3** : remettez l’archive à sa place dans le jeu (par exemple
+4. **Modifier un texte ou une couleur** : un fichier texte se modifie directement dans l’aperçu ; dans une table
+   `.col`, cliquez sur une couleur. Double-cliquez sur `languages.loc` pour ouvrir l’éditeur de langues.
+5. **Enregistrer** : `Ctrl+S`, ou le bouton d’enregistrement de l’aperçu. Les fichiers changés sont marqués d’un point
+   (ambre : modifié, vert : ajouté), et la ligne d’état indique le nombre de modifications à enregistrer.
+6. **Sur la PS3** : remettez l’archive à sa place dans le jeu (par exemple
    `/dev_hdd0/game/NPEB01899/USRDIR/Common/Media/MediaPS3.arc`).
 
-Conseils : gardez la **même résolution** que l’image d’origine (ou un multiple pour un pack HD), et ne renommez pas
-les fichiers d’origine : le jeu les cherche par leur nom.
+Conseils : gardez la **même résolution** que l’image d’origine (ou un multiple pour un pack HD), remplacez par un
+**PNG** une image qui doit garder sa **transparence** (un JPEG n’en a pas), et ne renommez pas les fichiers d’origine :
+le jeu les cherche par leur nom.
 
 ## Raccourcis clavier
 
@@ -106,7 +121,8 @@ les fichiers d’origine : le jeu les cherche par leur nom.
 | Problème | Solution |
 |---|---|
 | « Archive illisible » | Le fichier n’est pas une archive `.arc` de Minecraft PS3, ou il est tronqué : reprenez-le dans la backup. |
-| Le jeu affiche mal une image remplacée | Gardez la résolution d’origine et un PNG classique (l’application convertit les autres formats). |
+| Le jeu affiche mal une image remplacée | Gardez la résolution d’origine. Pour une image avec transparence, utilisez un PNG : un JPEG n’en a pas. |
+| La ligne d’état signale des « en-têtes .fui faux » | Un autre outil a modifié ces interfaces sans mettre à jour leur en-tête. ARC Editor les lit quand même : enregistrez (`Ctrl+S`) pour les corriger. |
 | Le double-clic n’ouvre pas les `.arc` | Un autre programme les ouvre déjà : clic droit, *Ouvrir avec*, puis ARC Editor. |
 | L’enregistrement échoue | Le dossier est peut-être en lecture seule ou l’archive ouverte ailleurs : *Enregistrer sous* dans un autre dossier. L’archive d’origine reste intacte. |
 
@@ -152,11 +168,15 @@ media.arc files). The interface is in French.
 **Requirements**: Windows 10 or 11 (64-bit) PC, nothing else to install (the .NET runtime is included).
 
 **Features**: folder tree, natural sort, instant search and filters · preview of PNG/JPEG images (zoom, pan,
-transparency checkerboard, crisp pixels), of the images embedded in **.fui** interfaces, of `.col` color tables, texts
-and a hex view · folder gallery · replace a file or an interface image (converted to 32-bit PNG, resolution changes
-flagged) · export a file, a folder, all images of an interface or the whole archive · add, rename, delete and restore
-files · safe saving (written next to the archive, then swapped in; original kept as `.bak`) · automatic updates and
-Discord presence.
+transparency checkerboard, crisp pixels), of the images embedded in **.fui** interfaces in their true colors
+(scrollable thumbnail strip), of `.col` color tables, texts and a hex view · folder gallery · replace a file or an
+interface image with a PNG, JPEG, BMP or GIF (in a `.fui`, a JPEG stays a JPEG, inserted as is; other formats become
+32-bit PNGs stored the way the game expects; resolution changes flagged) · export a file, a folder, all images of an
+interface (JPEGs as `.jpg`, others as PNG) or the whole archive · language editor for `languages.loc` (21 languages) ·
+text files (`.txt`, `.xml`, `.json`…) editable in place, keeping their encoding and line endings · `.col` colors
+editable (hex value or the Windows color picker) · add, rename, delete and restore files · safe saving (written next
+to the archive, then swapped in; original kept as `.bak`) · `.fui` interfaces whose header lists wrong sizes (left by
+other tools) still open and are fixed on save · automatic updates and Discord presence.
 
 **Install**: download **`ARCEditor-win-x64.zip`** from the
 [latest release](https://github.com/INF3CONxR7/ARC_Editor/releases/latest) (not the `.sig` file, used by the
