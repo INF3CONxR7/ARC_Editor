@@ -60,6 +60,10 @@
   l’original (`.bak`) est gardée au premier enregistrement. L’ordre des fichiers d’origine est conservé.
 - **Interfaces .fui réparées** : une interface dont l’en-tête annonce de fausses tailles (après un passage dans un
   autre outil) s’ouvre quand même, et son en-tête est corrigé à l’enregistrement.
+- **Paramètres** (*Aide > Paramètres*, `Ctrl+,`) : **trois thèmes** (sombre vert, sombre gris neutre ou clair),
+  taille des textes, **interface en français ou en anglais**, dossier des copies `.bak`, vérification de l’archive
+  écrite, journal de diagnostic… avec recherche, annuler et rétablir. *À propos* y montre les notes de mise à jour de
+  chaque version.
 - **Mises à jour automatiques** et **présence Discord**.
 
 ## Installation
@@ -104,6 +108,7 @@ le jeu les cherche par leur nom.
 | `F2` / `Suppr` | Renommer / Supprimer (dans la liste) |
 | `Ctrl++` / `Ctrl+-` / `Ctrl+0` / `Ctrl+1` | Zoom avant / arrière / ajusté / taille réelle (la molette zoome aussi) |
 | `F11` / `Échap` | Agrandir l’aperçu / revenir |
+| `Ctrl+,` / `F1` | Paramètres / À propos |
 
 ## Mises à jour et Discord
 
@@ -115,6 +120,7 @@ le jeu les cherche par leur nom.
   enregistre une archive), jamais le nom de vos fichiers. Le bouton aux ondes, à côté de la version, l’affiche ou la
   masque.
 - Les logos Discord et GitHub de l’en-tête ouvrent le serveur Discord et la page GitHub de l’auteur.
+- La recherche au démarrage et l’activité Discord se désactivent dans *Paramètres > Avancé*.
 
 ## En cas de problème
 
@@ -134,9 +140,9 @@ Supprimez le dossier de l’application. Elle garde aussi, pour votre compte Win
 
 | Emplacement | Contenu |
 |---|---|
-| `HKEY_CURRENT_USER\Software\ARCEditor` | Réglages (dossiers, affichage, archives récentes, activité Discord). |
+| `HKEY_CURRENT_USER\Software\ARCEditor` | Paramètres (thème, langue, dossiers, affichage, archives récentes, activité Discord…). |
 | `HKEY_CURRENT_USER\Software\Classes\.arc` et `…\ARCEditor.Archive` | Ouverture des `.arc` par double-clic. |
-| `%LocalAppData%\ARC Editor` | Journal des mises à jour. |
+| `%LocalAppData%\ARC Editor` | Journal des mises à jour, et journal de diagnostic s’il est activé. |
 
 Vous pouvez supprimer ces clés et ce dossier.
 
@@ -163,7 +169,8 @@ Développé par **INF3C7ONxR7**.
 ## English
 
 **ARC Editor** browses and edits the **.arc** archives of **Minecraft PlayStation 3 Edition** (MediaPS3.arc, pack
-media.arc files). The interface is in French.
+media.arc files). The interface is in French or English: choose it in *Help > Settings > General > Interface
+language* (applied at the next start).
 
 **Requirements**: Windows 10 or 11 (64-bit) PC, nothing else to install (the .NET runtime is included).
 
@@ -176,7 +183,8 @@ interface (JPEGs as `.jpg`, others as PNG) or the whole archive · language edit
 text files (`.txt`, `.xml`, `.json`…) editable in place, keeping their encoding and line endings · `.col` colors
 editable (hex value or the Windows color picker) · add, rename, delete and restore files · safe saving (written next
 to the archive, then swapped in; original kept as `.bak`) · `.fui` interfaces whose header lists wrong sizes (left by
-other tools) still open and are fixed on save · automatic updates and Discord presence.
+other tools) still open and are fixed on save · Settings window (*Help > Settings*, `Ctrl+,`): three themes, text
+size, backup folder, written archive check, diagnostic log, release notes · automatic updates and Discord presence.
 
 **Install**: download **`ARCEditor-win-x64.zip`** from the
 [latest release](https://github.com/INF3CONxR7/ARC_Editor/releases/latest) (not the `.sig` file, used by the
@@ -185,8 +193,8 @@ Authenticode-signed, so Windows SmartScreen may show "Windows protected your PC"
 anyway**.
 
 **Uninstall**: delete the app folder. Settings are in `HKEY_CURRENT_USER\Software\ARCEditor`, the `.arc` file
-association in `HKEY_CURRENT_USER\Software\Classes\.arc` and `…\ARCEditor.Archive`, the update log in
-`%LocalAppData%\ARC Editor`.
+association in `HKEY_CURRENT_USER\Software\Classes\.arc` and `…\ARCEditor.Archive`, the update and diagnostic logs
+in `%LocalAppData%\ARC Editor`.
 
 Unofficial project, not affiliated with Mojang, Microsoft, 4J Studios or Sony.
 
