@@ -36,7 +36,7 @@
 - **Ouverture des archives .arc** de Minecraft PS3 (`USRDIR\Common\Media\MediaPS3.arc`, `media.arc` des packs de
   textures et des mash-ups), par le menu, un glisser-déposer ou un double-clic sur le fichier.
 - **Liste des fichiers** avec dossiers repliables (Graphics, Structures…), tri naturel, recherche instantanée et
-  filtres (images, interfaces, autres).
+  filtres (interfaces les plus fournies, images, interfaces, autres).
 - **Aperçu** : images PNG et JPEG avec zoom, déplacement et damier de transparence (pixels nets pour les textures),
   **images intégrées aux interfaces .fui** dans leurs vraies couleurs (bande de vignettes, avec une barre pour la faire
   défiler), tables de couleurs `.col`, textes, et aperçu hexadécimal pour le reste. Un dossier choisi s’affiche en
@@ -46,7 +46,7 @@
   comme ceux du jeu pour garder les mêmes couleurs ; une image `.png` de l’archive reçoit un PNG. Une résolution
   différente de l’originale est signalée avant.
 - **Export** d’un fichier, d’un dossier, de toutes les images d’une interface (les JPEG en `.jpg` tels quels, les
-  autres en PNG) ou de l’archive entière.
+  autres en PNG ; un JPEG avec transparence peut aussi sortir en PNG pour la garder) ou de l’archive entière.
 - **Éditeur de langues** : un double-clic sur `languages.loc` ouvre les textes du jeu, langue par langue (21 langues,
   plus de 4 600 textes), avec recherche ; les traductions modifiées retournent dans l’archive. Un fichier `.loc` du
   disque s’ouvre aussi seul (*Ouvrir avec*).
@@ -58,8 +58,9 @@
 - **Ajout, renommage, suppression et restauration** des fichiers, avant enregistrement.
 - **Enregistrement sûr** : l’archive est écrite à côté puis mise à la place (jamais à moitié écrite), et une copie de
   l’original (`.bak`) est gardée au premier enregistrement. L’ordre des fichiers d’origine est conservé.
-- **Interfaces .fui réparées** : une interface dont l’en-tête annonce de fausses tailles (après un passage dans un
-  autre outil) s’ouvre quand même, et son en-tête est corrigé à l’enregistrement.
+- **Interfaces .fui réparées** : une interface laissée fausse par un autre outil (en-tête aux tailles fausses, JPEG
+  remplacé sans remettre à zéro sa position de transparence) s’ouvre et s’affiche quand même, et elle est corrigée à
+  l’enregistrement.
 - **Paramètres** (*Aide > Paramètres*, `Ctrl+,`) : **trois thèmes** (sombre vert, sombre gris neutre ou clair),
   taille des textes, **interface en français ou en anglais**, dossier des copies `.bak`, vérification de l’archive
   écrite, journal de diagnostic… avec recherche, annuler et rétablir. *À propos* y montre les notes de mise à jour de
@@ -174,7 +175,7 @@ language* (applied at the next start).
 
 **Requirements**: Windows 10 or 11 (64-bit) PC, nothing else to install (the .NET runtime is included).
 
-**Features**: folder tree, natural sort, instant search and filters · preview of PNG/JPEG images (zoom, pan,
+**Features**: folder tree, natural sort, instant search and filters (including the richest interfaces) · preview of PNG/JPEG images (zoom, pan,
 transparency checkerboard, crisp pixels), of the images embedded in **.fui** interfaces in their true colors
 (scrollable thumbnail strip), of `.col` color tables, texts and a hex view · folder gallery · replace a file or an
 interface image with a PNG, JPEG, BMP or GIF (in a `.fui`, a JPEG stays a JPEG, inserted as is; other formats become
@@ -182,8 +183,8 @@ interface image with a PNG, JPEG, BMP or GIF (in a `.fui`, a JPEG stays a JPEG, 
 interface (JPEGs as `.jpg`, others as PNG) or the whole archive · language editor for `languages.loc` (21 languages) ·
 text files (`.txt`, `.xml`, `.json`…) editable in place, keeping their encoding and line endings · `.col` colors
 editable (hex value or the Windows color picker) · add, rename, delete and restore files · safe saving (written next
-to the archive, then swapped in; original kept as `.bak`) · `.fui` interfaces whose header lists wrong sizes (left by
-other tools) still open and are fixed on save · Settings window (*Help > Settings*, `Ctrl+,`): three themes, text
+to the archive, then swapped in; original kept as `.bak`) · `.fui` interfaces left wrong by other tools (header with
+wrong sizes, JPEG with a stale transparency position) still open and are fixed on save · Settings window (*Help > Settings*, `Ctrl+,`): three themes, text
 size, backup folder, written archive check, diagnostic log, release notes · automatic updates and Discord presence.
 
 **Install**: download **`ARCEditor-win-x64.zip`** from the
